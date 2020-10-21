@@ -1,12 +1,13 @@
 import React from 'react';
-import List from '../list/List';
 import { 
   BrowserRouter as Router,
   Route, 
   Switch,
 } from 'react-router-dom';
+import './app.css';
+import List from '../list/List';
 import Detail from '../detail/Detail';
-import { render } from 'react-dom';
+
 
 export default function App() {
   return (

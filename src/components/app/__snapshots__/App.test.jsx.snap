@@ -5,3 +5,5 @@ exports[`App component renders App 1`] = `
   <ul />
 </DocumentFragment>
 `;
+
+exports[`App component renders App 2`] = `<DocumentFragment />`;
