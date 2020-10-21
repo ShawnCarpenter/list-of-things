@@ -6,9 +6,17 @@ export default class List extends Component {
   state = {
     characters: []
   }
-  componentDidMount(){
+  componentDidMount = () => {
     getCharacterList()
       .then(characters => this.setState({ characters }));
+  }
+
+  componentWillUnmount() {
+    // fix Warning: Can't perform a React state update on an unmounted component
+    // eslint-disable-next-line no-unused-vars
+    this.setState = (state, callback) => {
+      return;
+    };
   }
   render() {
     const { characters } = this.state;
