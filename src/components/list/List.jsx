@@ -1,20 +1,25 @@
 import React, { Component } from 'react';
-import { getPeople } from '../../services/get-data';
+import { Link } from 'react-router-dom';
+import { getCharacterList } from '../../services/get-character-list';
 
 export default class List extends Component {
   state = {
-    users: []
+    characters: []
   }
   componentDidMount(){
-    getPeople()
-      .then(people => this.setState({ users:people }));
+    getCharacterList()
+      .then(characters => this.setState({ characters }));
   }
   render() {
-    const { users } = this.state;
-    const names = users.map(user => <li 
-      key={user.uuid}>
-      {user.firstname} {user.lastname}
-    </li>);
+    const { characters } = this.state;
+    const names = characters.map(character => 
+      <Link to={`detail/${character.name}`} 
+        key={character.name}>
+        <li 
+          key={character.name}>
+          {character.name}
+        </li>
+      </Link>);
     return (
       <ul>{
         names
